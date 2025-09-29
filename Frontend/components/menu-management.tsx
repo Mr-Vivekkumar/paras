@@ -28,7 +28,8 @@ export function MenuManagement({ menus, onMenuCreated, onMenuUpdated, onMenuDele
 
     setIsLoading(true)
     try {
-      const response = await fetch("http://localhost:3001/api/menus", {
+      const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001"
+      const response = await fetch(`${API_BASE}/api/menus`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -56,7 +57,8 @@ export function MenuManagement({ menus, onMenuCreated, onMenuUpdated, onMenuDele
 
     setIsLoading(true)
     try {
-      const response = await fetch(`http://localhost:3001/api/menus/${editingMenu.id}`, {
+      const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001"
+      const response = await fetch(`${API_BASE}/api/menus/${editingMenu.id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -90,7 +92,8 @@ export function MenuManagement({ menus, onMenuCreated, onMenuUpdated, onMenuDele
 
     setIsLoading(true)
     try {
-      const response = await fetch(`http://localhost:3001/api/menus/${menuId}`, {
+      const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001"
+      const response = await fetch(`${API_BASE}/api/menus/${menuId}`, {
         method: "DELETE",
       })
 
