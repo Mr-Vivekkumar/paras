@@ -46,8 +46,7 @@ export default function MenuManagementPage() {
     dispatch(setError(null))
 
     try {
-      const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001"
-      const response = await fetch(`${API_BASE}/api/menus`)
+      const response = await fetch("http://localhost:3001/api/menus")
       if (!response.ok) throw new Error("Failed to fetch menus")
 
       const menusData = await response.json()
@@ -68,8 +67,7 @@ export default function MenuManagementPage() {
     dispatch(setLoading(true))
 
     try {
-      const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001"
-      const response = await fetch(`${API_BASE}/api/menus/${menuId}`)
+      const response = await fetch(`http://localhost:3001/api/menus/${menuId}`)
       if (!response.ok) throw new Error("Failed to fetch menu details")
 
       const menuData = await response.json()

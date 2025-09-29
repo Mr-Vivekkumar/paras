@@ -8,7 +8,7 @@ import { LoggingInterceptor } from './common/interceptors/logging.interceptor';
 
 // Pure functional configuration utilities
 const createCorsOptions = (frontendUrl: string) => ({
-  origin: [frontendUrl, 'http://localhost:3000'],
+  origin: [frontendUrl, 'http://localhost:3000', 'https://paras-ruby.vercel.app', 'https://paras-hb2o.vercel.app'],
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,

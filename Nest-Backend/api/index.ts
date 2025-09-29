@@ -10,7 +10,7 @@ import * as express from 'express';
 
 // CORS options mirroring main.ts
 const createCorsOptions = (frontendUrl: string) => ({
-  origin: [frontendUrl, process.env.FRONTEND_URL || 'http://localhost:3000'],
+  origin: [frontendUrl, process.env.FRONTEND_URL || 'http://localhost:3000', 'https://paras-ruby.vercel.app', 'https://paras-hb2o.vercel.app'],
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
