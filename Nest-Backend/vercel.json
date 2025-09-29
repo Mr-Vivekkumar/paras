@@ -5,5 +5,11 @@
   ],
   "routes": [
     { "src": "/api/(.*)", "dest": "/api/index.ts" }
-  ]
+  ],
+  "functions": {
+    "api/index.ts": {
+      "runtime": "nodejs20.x",
+      "maxDuration": 10
+    }
+  }
 }

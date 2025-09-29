@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
@@ -40,8 +41,20 @@ async function bootstrapServer(): Promise<express.Express> {
 }
 
 export default async function handler(req: any, res: any) {
-  if (!cachedServer) {
-    cachedServer = await bootstrapServer();
+  try {
+    if (!cachedServer) {
+      cachedServer = await bootstrapServer();
+      // Simple log to verify cold start
+      console.log('✅ Nest app initialized for serverless function');
+    }
+    return (cachedServer as any)(req, res);
+  } catch (error: any) {
+    console.error('❌ Serverless handler error:', error?.stack || error);
+    res.statusCode = 500;
+    res.setHeader('Content-Type', 'application/json');
+    res.end(JSON.stringify({
+      error: 'FUNCTION_INVOCATION_FAILED',
+      message: error?.message || 'Unknown error',
+    }));
   }
-  return (cachedServer as any)(req, res);
 }
