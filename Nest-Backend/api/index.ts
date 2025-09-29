@@ -6,7 +6,7 @@ import { AppModule } from '../src/app.module';
 import { AllExceptionsFilter } from '../src/common/filters/all-exceptions.filter';
 import { LoggingInterceptor } from '../src/common/interceptors/logging.interceptor';
 import { ExpressAdapter } from '@nestjs/platform-express';
-import * as express from 'express';
+import express from 'express';
 
 // CORS options mirroring main.ts
 const createCorsOptions = (frontendUrl: string) => ({
@@ -16,9 +16,9 @@ const createCorsOptions = (frontendUrl: string) => ({
   credentials: true,
 });
 
-let cachedServer: express.Express | null = null;
+let cachedServer: any = null;
 
-async function bootstrapServer(): Promise<express.Express> {
+async function bootstrapServer(): Promise<any> {
   const expressApp = express();
   const app = await NestFactory.create(AppModule, new ExpressAdapter(expressApp));
 
@@ -47,7 +47,9 @@ export default async function handler(req: any, res: any) {
       // Simple log to verify cold start
       console.log('✅ Nest app initialized for serverless function');
     }
-    return (cachedServer as any)(req, res);
+    
+    // Handle the request with the cached server
+    cachedServer(req, res);
   } catch (error: any) {
     console.error('❌ Serverless handler error:', error?.stack || error);
     res.statusCode = 500;
