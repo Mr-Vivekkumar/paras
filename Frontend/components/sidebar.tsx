@@ -36,8 +36,10 @@ const sidebarItems = [
       { icon: List, label: "API List" },
     ],
   },
-  { icon: Users, label: "Users & Group" },
-  { icon: Trophy, label: "Competition" },
+  { icon: Settings, label: "System Mangement" },
+  { icon: Users, label: "Users & Groups" },
+  { icon: Settings, label: "Configuration Management" },
+  { icon: List, label: "Reports & Analytics" },
 ]
 
 export function Sidebar({ className, isMobileOpen, onMobileClose }: SidebarProps) {

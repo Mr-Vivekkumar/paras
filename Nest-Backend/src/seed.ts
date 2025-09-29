@@ -50,318 +50,320 @@ const systemMenus = [
   },
 ];
 
-// Detailed menu structure based on your hierarchical menu image
+// Detailed menu structure with an intermediate "System Mangement" between menu and categories
 const systemMenuItems = [
-  // System Management Menu Items - Main Structure
   {
-    name: 'Systems',
+    name: 'System Mangement',
     menuName: 'System Management',
-    systemCode: 'SYSTEMS',
+    systemCode: 'SYS_MANGEMENT',
     parentCode: null,
     depth: 1,
     children: [
       {
-        name: 'System Code',
+        name: 'Systems',
         menuName: 'System Management',
-        systemCode: 'SYS_CODE',
-        parentCode: 'SYSTEMS',
+        systemCode: 'SYSTEMS',
+        parentCode: 'SYS_MANGEMENT',
         depth: 2,
         children: [
           {
-            name: 'Code Registration',
+            name: 'System Code',
             menuName: 'System Management',
-            systemCode: 'CODE_REG',
-            parentCode: 'SYS_CODE',
+            systemCode: 'SYS_CODE',
+            parentCode: 'SYSTEMS',
+            depth: 3,
+            children: [
+              {
+                name: 'Code Registration',
+                menuName: 'System Management',
+                systemCode: 'CODE_REG',
+                parentCode: 'SYS_CODE',
+                depth: 4,
+              },
+              {
+                name: 'Code Registration - 2',
+                menuName: 'System Management',
+                systemCode: 'CODE_REG_2',
+                parentCode: 'SYS_CODE',
+                depth: 4,
+              },
+            ],
+          },
+          {
+            name: 'Properties',
+            menuName: 'System Management',
+            systemCode: 'PROPERTIES',
+            parentCode: 'SYSTEMS',
             depth: 3,
           },
           {
-            name: 'Code Registration - 2',
+            name: 'Menus',
             menuName: 'System Management',
-            systemCode: 'CODE_REG_2',
-            parentCode: 'SYS_CODE',
+            systemCode: 'MENUS',
+            parentCode: 'SYSTEMS',
             depth: 3,
+            children: [
+              {
+                name: 'Menu Registration',
+                menuName: 'System Management',
+                systemCode: 'MENU_REG',
+                parentCode: 'MENUS',
+                depth: 4,
+              },
+            ],
+          },
+          {
+            name: 'API List',
+            menuName: 'System Management',
+            systemCode: 'API_LIST',
+            parentCode: 'SYSTEMS',
+            depth: 3,
+            children: [
+              {
+                name: 'API Registration',
+                menuName: 'System Management',
+                systemCode: 'API_REG',
+                parentCode: 'API_LIST',
+                depth: 4,
+              },
+              {
+                name: 'API Edit',
+                menuName: 'System Management',
+                systemCode: 'API_EDIT',
+                parentCode: 'API_LIST',
+                depth: 4,
+              },
+            ],
           },
         ],
       },
       {
-        name: 'Properties',
+        name: 'Users & Groups',
         menuName: 'System Management',
-        systemCode: 'PROPERTIES',
-        parentCode: 'SYSTEMS',
-        depth: 2,
-      },
-      {
-        name: 'Menus',
-        menuName: 'System Management',
-        systemCode: 'MENUS',
-        parentCode: 'SYSTEMS',
+        systemCode: 'USERS_GROUPS',
+        parentCode: 'SYS_MANGEMENT',
         depth: 2,
         children: [
           {
-            name: 'Menu Registration',
+            name: 'Users',
             menuName: 'System Management',
-            systemCode: 'MENU_REG',
-            parentCode: 'MENUS',
+            systemCode: 'USERS',
+            parentCode: 'USERS_GROUPS',
             depth: 3,
+            children: [
+              {
+                name: 'User Account Registration',
+                menuName: 'System Management',
+                systemCode: 'USER_REG',
+                parentCode: 'USERS',
+                depth: 4,
+              },
+              {
+                name: 'User Profile Management',
+                menuName: 'System Management',
+                systemCode: 'USER_PROFILE',
+                parentCode: 'USERS',
+                depth: 4,
+              },
+              {
+                name: 'User Permissions',
+                menuName: 'System Management',
+                systemCode: 'USER_PERMISSIONS',
+                parentCode: 'USERS',
+                depth: 4,
+              },
+            ],
+          },
+          {
+            name: 'Groups',
+            menuName: 'System Management',
+            systemCode: 'GROUPS',
+            parentCode: 'USERS_GROUPS',
+            depth: 3,
+            children: [
+              {
+                name: 'User Group Registration',
+                menuName: 'System Management',
+                systemCode: 'USER_GROUP_REG',
+                parentCode: 'GROUPS',
+                depth: 4,
+              },
+              {
+                name: 'Group Permissions',
+                menuName: 'System Management',
+                systemCode: 'GROUP_PERMISSIONS',
+                parentCode: 'GROUPS',
+                depth: 4,
+              },
+              {
+                name: 'Group Members',
+                menuName: 'System Management',
+                systemCode: 'GROUP_MEMBERS',
+                parentCode: 'GROUPS',
+                depth: 4,
+              },
+            ],
+          },
+          {
+            name: '사용자 승인', // Korean: User Approval
+            menuName: 'System Management',
+            systemCode: 'USER_APPROVAL',
+            parentCode: 'USERS_GROUPS',
+            depth: 3,
+            children: [
+              {
+                name: '사용자 승인 상세', // Korean: User Approval Details
+                menuName: 'System Management',
+                systemCode: 'USER_APPROVAL_DETAIL',
+                parentCode: 'USER_APPROVAL',
+                depth: 4,
+              },
+              {
+                name: '승인 히스토리', // Korean: Approval History
+                menuName: 'System Management',
+                systemCode: 'APPROVAL_HISTORY',
+                parentCode: 'USER_APPROVAL',
+                depth: 4,
+              },
+            ],
+          },
+          {
+            name: 'Role Management',
+            menuName: 'System Management',
+            systemCode: 'ROLE_MGMT',
+            parentCode: 'USERS_GROUPS',
+            depth: 3,
+            children: [
+              {
+                name: 'Role Creation',
+                menuName: 'System Management',
+                systemCode: 'ROLE_CREATE',
+                parentCode: 'ROLE_MGMT',
+                depth: 4,
+              },
+              {
+                name: 'Role Assignment',
+                menuName: 'System Management',
+                systemCode: 'ROLE_ASSIGN',
+                parentCode: 'ROLE_MGMT',
+                depth: 4,
+              },
+            ],
           },
         ],
       },
       {
-        name: 'API List',
+        name: 'Configuration Management',
         menuName: 'System Management',
-        systemCode: 'API_LIST',
-        parentCode: 'SYSTEMS',
+        systemCode: 'CONFIG_MGMT',
+        parentCode: 'SYS_MANGEMENT',
         depth: 2,
         children: [
           {
-            name: 'API Registration',
+            name: 'System Settings',
             menuName: 'System Management',
-            systemCode: 'API_REG',
-            parentCode: 'API_LIST',
+            systemCode: 'SYS_SETTINGS',
+            parentCode: 'CONFIG_MGMT',
             depth: 3,
+            children: [
+              {
+                name: 'General Settings',
+                menuName: 'System Management',
+                systemCode: 'GENERAL_SETTINGS',
+                parentCode: 'SYS_SETTINGS',
+                depth: 4,
+              },
+              {
+                name: 'Security Settings',
+                menuName: 'System Management',
+                systemCode: 'SECURITY_SETTINGS',
+                parentCode: 'SYS_SETTINGS',
+                depth: 4,
+              },
+            ],
           },
           {
-            name: 'API Edit',
+            name: 'Database Configuration',
             menuName: 'System Management',
-            systemCode: 'API_EDIT',
-            parentCode: 'API_LIST',
+            systemCode: 'DB_CONFIG',
+            parentCode: 'CONFIG_MGMT',
             depth: 3,
+            children: [
+              {
+                name: 'Connection Settings',
+                menuName: 'System Management',
+                systemCode: 'DB_CONNECTION',
+                parentCode: 'DB_CONFIG',
+                depth: 4,
+              },
+              {
+                name: 'Backup Settings',
+                menuName: 'System Management',
+                systemCode: 'DB_BACKUP',
+                parentCode: 'DB_CONFIG',
+                depth: 4,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: 'Reports & Analytics',
+        menuName: 'System Management',
+        systemCode: 'REPORTS_ANALYTICS',
+        parentCode: 'SYS_MANGEMENT',
+        depth: 2,
+        children: [
+          {
+            name: 'User Reports',
+            menuName: 'System Management',
+            systemCode: 'USER_REPORTS',
+            parentCode: 'REPORTS_ANALYTICS',
+            depth: 3,
+            children: [
+              {
+                name: 'User Activity Report',
+                menuName: 'System Management',
+                systemCode: 'USER_ACTIVITY',
+                parentCode: 'USER_REPORTS',
+                depth: 4,
+              },
+              {
+                name: 'Login Statistics',
+                menuName: 'System Management',
+                systemCode: 'LOGIN_STATS',
+                parentCode: 'USER_REPORTS',
+                depth: 4,
+              },
+            ],
+          },
+          {
+            name: 'System Reports',
+            menuName: 'System Management',
+            systemCode: 'SYSTEM_REPORTS',
+            parentCode: 'REPORTS_ANALYTICS',
+            depth: 3,
+            children: [
+              {
+                name: 'Performance Report',
+                menuName: 'System Management',
+                systemCode: 'PERFORMANCE_REPORT',
+                parentCode: 'SYSTEM_REPORTS',
+                depth: 4,
+              },
+              {
+                name: 'Error Log Report',
+                menuName: 'System Management',
+                systemCode: 'ERROR_LOG_REPORT',
+                parentCode: 'SYSTEM_REPORTS',
+                depth: 4,
+              },
+            ],
           },
         ],
       },
     ],
   },
-
-  // Users & Groups - Main Level (moved to System Management)
-  {
-    name: 'Users & Groups',
-    menuName: 'System Management',
-    systemCode: 'USERS_GROUPS',
-    parentCode: null,
-    depth: 1,
-    children: [
-      {
-        name: 'Users',
-        menuName: 'System Management',
-        systemCode: 'USERS',
-        parentCode: 'USERS_GROUPS',
-        depth: 2,
-        children: [
-          {
-            name: 'User Account Registration',
-            menuName: 'System Management',
-            systemCode: 'USER_REG',
-            parentCode: 'USERS',
-            depth: 3,
-          },
-          {
-            name: 'User Profile Management',
-            menuName: 'System Management',
-            systemCode: 'USER_PROFILE',
-            parentCode: 'USERS',
-            depth: 3,
-          },
-          {
-            name: 'User Permissions',
-            menuName: 'System Management',
-            systemCode: 'USER_PERMISSIONS',
-            parentCode: 'USERS',
-            depth: 3,
-          },
-        ],
-      },
-      {
-        name: 'Groups',
-        menuName: 'System Management',
-        systemCode: 'GROUPS',
-        parentCode: 'USERS_GROUPS',
-        depth: 2,
-        children: [
-          {
-            name: 'User Group Registration',
-            menuName: 'System Management',
-            systemCode: 'USER_GROUP_REG',
-            parentCode: 'GROUPS',
-            depth: 3,
-          },
-          {
-            name: 'Group Permissions',
-            menuName: 'System Management',
-            systemCode: 'GROUP_PERMISSIONS',
-            parentCode: 'GROUPS',
-            depth: 3,
-          },
-          {
-            name: 'Group Members',
-            menuName: 'System Management',
-            systemCode: 'GROUP_MEMBERS',
-            parentCode: 'GROUPS',
-            depth: 3,
-          },
-        ],
-      },
-      {
-        name: '사용자 승인', // Korean: User Approval
-        menuName: 'System Management',
-        systemCode: 'USER_APPROVAL',
-        parentCode: 'USERS_GROUPS',
-        depth: 2,
-        children: [
-          {
-            name: '사용자 승인 상세', // Korean: User Approval Details
-            menuName: 'System Management',
-            systemCode: 'USER_APPROVAL_DETAIL',
-            parentCode: 'USER_APPROVAL',
-            depth: 3,
-          },
-          {
-            name: '승인 히스토리', // Korean: Approval History
-            menuName: 'System Management',
-            systemCode: 'APPROVAL_HISTORY',
-            parentCode: 'USER_APPROVAL',
-            depth: 3,
-          },
-        ],
-      },
-      {
-        name: 'Role Management',
-        menuName: 'System Management',
-        systemCode: 'ROLE_MGMT',
-        parentCode: 'USERS_GROUPS',
-        depth: 2,
-        children: [
-          {
-            name: 'Role Creation',
-            menuName: 'System Management',
-            systemCode: 'ROLE_CREATE',
-            parentCode: 'ROLE_MGMT',
-            depth: 3,
-          },
-          {
-            name: 'Role Assignment',
-            menuName: 'System Management',
-            systemCode: 'ROLE_ASSIGN',
-            parentCode: 'ROLE_MGMT',
-            depth: 3,
-          },
-        ],
-      },
-    ],
-  },
-
-  // Add new parent level items
-  {
-    name: 'Configuration Management',
-    menuName: 'System Management',
-    systemCode: 'CONFIG_MGMT',
-    parentCode: null,
-    depth: 1,
-    children: [
-      {
-        name: 'System Settings',
-        menuName: 'System Management',
-        systemCode: 'SYS_SETTINGS',
-        parentCode: 'CONFIG_MGMT',
-        depth: 2,
-        children: [
-          {
-            name: 'General Settings',
-            menuName: 'System Management',
-            systemCode: 'GENERAL_SETTINGS',
-            parentCode: 'SYS_SETTINGS',
-            depth: 3,
-          },
-          {
-            name: 'Security Settings',
-            menuName: 'System Management',
-            systemCode: 'SECURITY_SETTINGS',
-            parentCode: 'SYS_SETTINGS',
-            depth: 3,
-          },
-        ],
-      },
-      {
-        name: 'Database Configuration',
-        menuName: 'System Management',
-        systemCode: 'DB_CONFIG',
-        parentCode: 'CONFIG_MGMT',
-        depth: 2,
-        children: [
-          {
-            name: 'Connection Settings',
-            menuName: 'System Management',
-            systemCode: 'DB_CONNECTION',
-            parentCode: 'DB_CONFIG',
-            depth: 3,
-          },
-          {
-            name: 'Backup Settings',
-            menuName: 'System Management',
-            systemCode: 'DB_BACKUP',
-            parentCode: 'DB_CONFIG',
-            depth: 3,
-          },
-        ],
-      },
-    ],
-  },
-
-  {
-    name: 'Reports & Analytics',
-    menuName: 'System Management',
-    systemCode: 'REPORTS_ANALYTICS',
-    parentCode: null,
-    depth: 1,
-    children: [
-      {
-        name: 'User Reports',
-        menuName: 'System Management',
-        systemCode: 'USER_REPORTS',
-        parentCode: 'REPORTS_ANALYTICS',
-        depth: 2,
-        children: [
-          {
-            name: 'User Activity Report',
-            menuName: 'System Management',
-            systemCode: 'USER_ACTIVITY',
-            parentCode: 'USER_REPORTS',
-            depth: 3,
-          },
-          {
-            name: 'Login Statistics',
-            menuName: 'System Management',
-            systemCode: 'LOGIN_STATS',
-            parentCode: 'USER_REPORTS',
-            depth: 3,
-          },
-        ],
-      },
-      {
-        name: 'System Reports',
-        menuName: 'System Management',
-        systemCode: 'SYSTEM_REPORTS',
-        parentCode: 'REPORTS_ANALYTICS',
-        depth: 2,
-        children: [
-          {
-            name: 'Performance Report',
-            menuName: 'System Management',
-            systemCode: 'PERFORMANCE_REPORT',
-            parentCode: 'SYSTEM_REPORTS',
-            depth: 3,
-          },
-          {
-            name: 'Error Log Report',
-            menuName: 'System Management',
-            systemCode: 'ERROR_LOG_REPORT',
-            parentCode: 'SYSTEM_REPORTS',
-            depth: 3,
-          },
-        ],
-      },
-    ],
-  },
-
 ];
 
 // Helper function to create menu items recursively with enhanced parent_id handling

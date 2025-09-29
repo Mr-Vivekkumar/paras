@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { DatabaseModule } from './modules/database/database.module';
 import { MenuModule } from './modules/menu/menu.module';
-// MenuItemModule removed to keep API read-only and minimal
+import { MenuItemModule } from './modules/menu-item/menu-item.module';
 
 @Module({
   imports: [
@@ -12,6 +12,7 @@ import { MenuModule } from './modules/menu/menu.module';
     }),
     DatabaseModule,
     MenuModule,
+    MenuItemModule,
   ],
 })
 export class AppModule {}

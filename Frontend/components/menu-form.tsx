@@ -1,8 +1,9 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { Label } from "@/components/ui/label"
 import type { MenuItem } from "@/lib/db"
+import { useAppSelector } from "@/lib/hooks"
 
 interface MenuFormProps {
   selectedItem: MenuItem | null
@@ -10,6 +11,25 @@ interface MenuFormProps {
 
 export function MenuForm({ selectedItem }: MenuFormProps) {
   const [name, setName] = useState("")
+  const { selectedMenu } = useAppSelector((state) => state.menu)
+
+  const findItemById = (items: MenuItem[], id: string): MenuItem | null => {
+    for (const item of items) {
+      if (item.id === id) return item
+      if (item.children && item.children.length) {
+        const found = findItemById(item.children, id)
+        if (found) return found
+      }
+    }
+    return null
+  }
+
+  const parentName = useMemo(() => {
+    if (!selectedItem?.parent_id) return null
+    if (!selectedMenu?.items) return null
+    const parent = findItemById(selectedMenu.items, selectedItem.parent_id)
+    return parent?.name || null
+  }, [selectedItem, selectedMenu])
 
   useEffect(() => {
     if (selectedItem) {
@@ -56,7 +76,7 @@ export function MenuForm({ selectedItem }: MenuFormProps) {
             Parent Data
           </Label>
           <div className="mt-1 px-3 py-2 bg-muted rounded-md text-sm text-muted-foreground">
-            {selectedItem.parent_id ? "Has Parent" : "Root Item"}
+            {selectedItem.parent_id ? parentName || "Unknown Parent" : "Root Item"}
           </div>
         </div>
 
