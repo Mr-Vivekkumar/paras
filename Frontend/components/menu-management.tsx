@@ -28,7 +28,7 @@ export function MenuManagement({ menus, onMenuCreated, onMenuUpdated, onMenuDele
 
     setIsLoading(true)
     try {
-      const response = await fetch("http://localhost:3001/api/menus", {
+      const response = await fetch("https://paras-1-ra6r.onrender.com/api/menus", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -56,7 +56,7 @@ export function MenuManagement({ menus, onMenuCreated, onMenuUpdated, onMenuDele
 
     setIsLoading(true)
     try {
-      const response = await fetch(`http://localhost:3001/api/menus/${editingMenu.id}`, {
+      const response = await fetch(`https://paras-1-ra6r.onrender.com/api/menus/${editingMenu.id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -90,7 +90,7 @@ export function MenuManagement({ menus, onMenuCreated, onMenuUpdated, onMenuDele
 
     setIsLoading(true)
     try {
-      const response = await fetch(`http://localhost:3001/api/menus/${menuId}`, {
+      const response = await fetch(`https://paras-1-ra6r.onrender.com/api/menus/${menuId}`, {
         method: "DELETE",
       })
 
