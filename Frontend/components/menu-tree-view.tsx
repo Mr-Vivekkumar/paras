@@ -103,20 +103,24 @@ function TreeItem({
         {/* Item Name */}
         <span className="flex-1 text-sm text-foreground truncate normal-case">{item.name}</span>
 
-        {/* Blue + action button */}
-        <Button
-          variant="default"
-          size="sm"
-          className="h-6 w-6 p-0 bg-blue-600 text-white hover:bg-blue-700 inline-flex rounded-full"
-          onClick={(e) => {
-            e.stopPropagation()
-            onAddActionClick(item)
-          }}
-          aria-label="Add or edit parent"
-          title="Add or edit parent"
-        >
-          <Plus className="h-3 w-3" />
-        </Button>
+        {/* Blue + action button - only visible for selected item and positioned right next to the node */}
+        {isSelected && (
+          <div className="absolute right-0 top-1/2 -translate-y-1/2">
+            <Button
+              variant="default"
+              size="sm"
+              className="h-6 w-6 p-0 bg-blue-600 text-white hover:bg-blue-700 inline-flex rounded-full"
+              onClick={(e) => {
+                e.stopPropagation()
+                onAddActionClick(item)
+              }}
+              aria-label="Add or edit parent"
+              title="Add or edit parent"
+            >
+              <Plus className="h-3 w-3" />
+            </Button>
+          </div>
+        )}
       </div>
 
       {/* Children */}

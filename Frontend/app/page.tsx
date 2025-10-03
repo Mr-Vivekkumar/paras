@@ -29,6 +29,7 @@ export default function MenuManagementPage() {
 
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false)
   const [isMobileFormOpen, setIsMobileFormOpen] = useState(false)
+  const [isDetailSidebarVisible, setIsDetailSidebarVisible] = useState(false)
   // Management UI removed to keep app read-only
 
   useEffect(() => {
@@ -118,6 +119,7 @@ export default function MenuManagementPage() {
 
   const handleSelectItem = (item: any) => {
     dispatch(setSelectedItem(item))
+    setIsDetailSidebarVisible(true)
   }
 
   // Mutating menu management actions removed
@@ -161,7 +163,7 @@ export default function MenuManagementPage() {
         <MobileHeader onMenuClick={() => setIsMobileSidebarOpen(true)} />
 
         {/* Menu Tree Section */}
-        <div className="flex-1 p-4 lg:p-6 lg:border-r border-border overflow-auto">
+        <div className="w-110 min-w-[580px] max-w-[860px] p-4 lg:p-6 lg:border-r border-border overflow-auto">
           <div className="hidden lg:block">
             <MenuBreadcrumb />
             <MenuHeader />
@@ -215,7 +217,7 @@ export default function MenuManagementPage() {
         </div>
 
         {/* Desktop Form Section */}
-        <div className="hidden lg:block w-80 p-6 bg-card border-l border-border">
+        <div className={`${isDetailSidebarVisible ? 'lg:block' : 'hidden'} w-80 p-6 bg-card border-l border-border`}>
           <MenuForm selectedItem={selectedItem} />
         </div>
 
