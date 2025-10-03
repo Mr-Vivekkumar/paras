@@ -279,14 +279,14 @@ export function MenuTreeView({
                 try {
                   if (dialogAction === "add") {
                     if (!newItemName.trim()) return
-                    const resp = await fetch("http://localhost:3001/api/menu-items", {
+                    const resp = await fetch("https://paras-1-ra6r.onrender.com/api/menu-items", {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },
                       body: JSON.stringify({ name: newItemName.trim(), menu_id: selectedMenu.id, parent_id: targetItem.id }),
                     })
                     if (!resp.ok) throw new Error("Failed to add child")
                   } else if (dialogAction === "reparent" && selectedItem) {
-                    const resp = await fetch(`http://localhost:3001/api/menu-items/${selectedItem.id}/move`, {
+                    const resp = await fetch(`https://paras-1-ra6r.onrender.com/api/menu-items/${selectedItem.id}/move`, {
                       method: "PATCH",
                       headers: { "Content-Type": "application/json" },
                       body: JSON.stringify({ newParentId: targetItem.id, newMenuId: selectedMenu.id }),
@@ -294,7 +294,7 @@ export function MenuTreeView({
                     if (!resp.ok) throw new Error("Failed to move item")
                   }
                   // After mutation, refresh selected menu
-                  const refresh = await fetch(`http://localhost:3001/api/menus/${selectedMenu.id}`)
+                  const refresh = await fetch(`https://paras-1-ra6r.onrender.com/api/menus/${selectedMenu.id}`)
                   if (refresh.ok) {
                     const data: MenuWithItems = await refresh.json()
                     dispatch(setSelectedMenu(data))

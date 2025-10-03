@@ -47,7 +47,7 @@ export default function MenuManagementPage() {
     dispatch(setError(null))
 
     try {
-      const response = await fetch("http://localhost:3001/api/menus")
+      const response = await fetch("https://paras-1-ra6r.onrender.com/api/menus")
       if (!response.ok) throw new Error("Failed to fetch menus")
 
       const menusData = await response.json()
@@ -68,7 +68,7 @@ export default function MenuManagementPage() {
     dispatch(setLoading(true))
 
     try {
-      const response = await fetch(`http://localhost:3001/api/menus/${menuId}`)
+      const response = await fetch(`https://paras-1-ra6r.onrender.com/api/menus/${menuId}`)
       if (!response.ok) throw new Error("Failed to fetch menu details")
 
       const menuData = await response.json()
